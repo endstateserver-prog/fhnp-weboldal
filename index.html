@@ -1,157 +1,499 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FHNP - A Jövő Stratégiája</title>
-    <style>
-        :root {
-            --bg-black: #050505;
-            --neon-red: #ff003c;
-            --neon-yellow: #f1c40f;
-            --text-gray: #e0e0e0;
-            --card-bg: #111111;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiatal Halogatók Nemzeti Pártja</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: Arial, sans-serif;
+    }
 
-        body {
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-            margin: 0;
-            background-color: var(--bg-black);
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
+    body {
+      background: linear-gradient(135deg, #0a0f1f, #111827, #1f2937);
+      color: white;
+      overflow-x: hidden;
+    }
 
-        /* Neon kiemelés és árnyékok */
-        .neon-border {
-            border: 1px solid var(--neon-red);
-            box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
-        }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 15, 31, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
 
-        header {
-            background: linear-gradient(180deg, #1a0000 0%, var(--bg-black) 100%);
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom: 2px solid var(--neon-red);
-        }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+    }
 
-        h1 {
-            color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-size: 3rem;
-            margin: 0;
-            text-shadow: 0 0 20px var(--neon-red);
-        }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #60a5fa;
+      letter-spacing: 1px;
+    }
 
-        .highlight { color: var(--neon-yellow); font-weight: bold; }
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      transition: 0.3s ease;
+      font-weight: 600;
+    }
 
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 5px;
-            margin-bottom: 30px;
-            border-left: 5px solid var(--neon-yellow);
-            transition: 0.3s;
-        }
+    .nav-links a:hover {
+      background: #3b82f6;
+      transform: translateY(-2px);
+    }
 
-        .card:hover {
-            box-shadow: 0 0 25px rgba(241, 196, 15, 0.2);
-            transform: scale(1.01);
-        }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
 
-        /* Pártprogram Szekció */
-        .program-viewer {
-            background: #000;
-            padding: 40px;
-            text-align: center;
-            border: 1px solid var(--neon-red);
-            border-radius: 10px;
-        }
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,0.25), transparent 70%);
+      border-radius: 50%;
+      animation: pulse 6s infinite alternate;
+      z-index: 0;
+    }
 
-        .btn-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
+    .hero::before {
+      top: -100px;
+      left: -100px;
+    }
 
-        .btn {
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 3px;
-            transition: 0.3s;
-        }
+    .hero::after {
+      bottom: -100px;
+      right: -100px;
+      animation-delay: 2s;
+    }
 
-        .btn-view {
-            border: 2px solid var(--neon-yellow);
-            color: var(--neon-yellow);
-        }
+    @keyframes pulse {
+      from { transform: scale(1) translateY(0); }
+      to { transform: scale(1.2) translateY(20px); }
+    }
 
-        .btn-view:hover {
-            background: var(--neon-yellow);
-            color: black;
-        }
+    .hero-content {
+      max-width: 900px;
+      z-index: 1;
+      animation: fadeUp 1.2s ease;
+    }
 
-        .btn-download {
-            background: var(--neon-red);
-            color: white;
-        }
+    .hero h1 {
+      font-size: 3.2rem;
+      margin-bottom: 20px;
+      color: #93c5fd;
+      text-shadow: 0 0 18px rgba(147,197,253,0.35);
+    }
 
-        .btn-download:hover {
-            box-shadow: 0 0 20px var(--neon-red);
-        }
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #e5e7eb;
+      margin-bottom: 28px;
+    }
 
-        footer {
-            text-align: center;
-            padding: 50px;
-            border-top: 1px solid #333;
-            color: #666;
-        }
-    </style>
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      color: white;
+      box-shadow: 0 0 18px rgba(59,130,246,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 90px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.3rem;
+      color: #93c5fd;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #d1d5db;
+      max-width: 800px;
+      margin: 0 auto 50px auto;
+      line-height: 1.7;
+    }
+
+    .intro-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 35px;
+      line-height: 1.9;
+      font-size: 1.08rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeUp 1s ease;
+    }
+
+    .reforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .reform-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      transform: translateY(40px);
+      opacity: 0;
+    }
+
+    .reform-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .reform-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(59,130,246,0.18);
+      border-color: rgba(96,165,250,0.45);
+    }
+
+    .reform-card h3 {
+      color: #bfdbfe;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .reform-card p {
+      color: #d1d5db;
+      line-height: 1.6;
+    }
+
+    .reform-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      margin-top: 10px;
+    }
+
+    .reform-card.active .reform-details {
+      max-height: 300px;
+    }
+
+    .reform-details ul {
+      padding-left: 18px;
+      color: #e5e7eb;
+      line-height: 1.8;
+      margin-top: 12px;
+    }
+
+    .discord-box {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(88,101,242,0.18), rgba(59,130,246,0.16));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 40px 20px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    }
+
+    .discord-box h3 {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      color: #c7d2fe;
+    }
+
+    .discord-box p {
+      color: #e5e7eb;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+
+    .discord-link {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background: #5865F2;
+      padding: 14px 26px;
+      border-radius: 14px;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .discord-link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(88,101,242,0.35);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #9ca3af;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.15);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 14px;
+        padding: 18px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>FHNP</h1>
-    <p><span class="highlight">ERŐ. FELELŐSSÉG. STRATÉGIA.</span></p>
-</header>
+  <header>
+    <nav>
+      <div class="logo">FHNP</div>
+      <div class="nav-links">
+        <a href="#bemutatkozas">Bemutatkozás</a>
+        <a href="#reformok">Reformok</a>
+        <a href="#discord">Discord</a>
+        <a href="csevego.html">Csevegő</a>
+      </div>
+    </nav>
+  </header>
 
-<div class="container">
-    <section class="card">
-        <h2>A Halogatás Vége</h2>
-        <p>A világ változik, és mi vagyunk az egyetlenek, akik nem kapkodva, hanem <span class="highlight">precíz tervezéssel</span> válaszolunk a jövő kihívásaira. Az FHNP a tudatos választók pártja.</p>
-    </section>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Fiatal Halogatók Nemzeti Pártja</h1>
+      <p>
+        Nem azért jöttünk, hogy halkak legyünk. Azért jöttünk, hogy végre kimondjuk:
+        a fiataloknak nem a jövőben kell számítaniuk, hanem most. Egy erős, bátor és
+        modern közösséget építünk, ahol az ötletek nem elvesznek, hanem valósággá válnak.
+      </p>
+      <div class="hero-buttons">
+        <a href="#reformok" class="btn btn-primary">Reformok megtekintése</a>
+        <a href="csevego.html" class="btn btn-secondary">Belépés a csevegőbe</a>
+      </div>
+    </div>
+  </section>
 
-    <section class="program-viewer">
-        <h2 style="color: var(--neon-red);">HIVATALOS PÁRTPROGRAM 2026</h2>
-        <p>Ismerje meg részletesen víziókat, gazdasági tervünket és társadalmi reformjainkat.</p>
-        
-        <div class="btn-group">
-            <a href="program.html" class="btn btn-view">Program megtekintése</a>
-            
-            <a href="fhnp_program_2026.pdf" download class="btn btn-download">Letöltés PDF-ben</a>
+  <section id="bemutatkozas">
+    <div class="container">
+      <h2 class="section-title">Bemutatkozás</h2>
+      <p class="section-subtitle">
+        Egy kedves, de határozott közösség vagyunk. Hiszünk abban, hogy a fiatalok hangja nem
+        mellékes háttérzaj, hanem egy ország jövőjének legerősebb alapja.
+      </p>
+      <div class="intro-box">
+        A Fiatal Halogatók Nemzeti Pártja azért jött létre, hogy új lendületet adjon a közéletnek.
+        Mi nem üres ígéretekben gondolkodunk, hanem valódi változásban. Olyan országot akarunk,
+        ahol a fiataloknak nem csak túlélniük kell, hanem építkezniük, fejlődniük és vezetniük is lehet.
+        <br><br>
+        Kedvesek vagyunk azokkal, akik változást akarnak. De erősek vagyunk azokkal szemben,
+        akik visszatartanák a fejlődést. Modern oktatás, megfizethető életkezdés, digitális fejlődés,
+        átláthatóbb rendszer és több lehetőség – ez a mi utunk.
+      </div>
+    </div>
+  </section>
+
+  <section id="reformok">
+    <div class="container">
+      <h2 class="section-title">Reformok</h2>
+      <p class="section-subtitle">
+        Kattints a kártyákra, és nézd meg, milyen konkrét javaslatok tartoznak az egyes területekhez.
+      </p>
+
+      <div class="reforms-grid">
+        <div class="reform-card">
+          <h3>Oktatási reform</h3>
+          <p>Modern, használható tudás minden fiatalnak.</p>
+          <div class="reform-details">
+            <ul>
+              <li>Gyakorlatiasabb oktatás és korszerűbb tananyag.</li>
+              <li>Pénzügyi, digitális és jogi alapismeretek bevezetése.</li>
+              <li>Erősebb nyelvoktatás és valódi karrierfelkészítés.</li>
+            </ul>
+          </div>
         </div>
-    </section>
 
-    <section class="card" style="border-left: 5px solid var(--neon-red); margin-top: 40px;">
-        <h2>Bázisunk</h2>
-        <p>Csatlakozzon az operatív törzshöz a Discord szerverünkön, ahol közvetlen beleszólása van a párt irányításába.</p>
-        <a href="https://discord.gg/yftFB4HrkZ" style="color: var(--neon-yellow); text-decoration: none; font-weight: bold;">Kattintson ide a belépéshez -></a>
-    </section>
-</div>
+        <div class="reform-card">
+          <h3>Lakhatási reform</h3>
+          <p>Ne legyen lehetetlen az önálló életkezdés.</p>
+          <div class="reform-details">
+            <ul>
+              <li>Kedvezményes első lakhatási program fiataloknak.</li>
+              <li>Átláthatóbb albérleti rendszer.</li>
+              <li>Fiataloknak szóló helyi támogatási modellek.</li>
+            </ul>
+          </div>
+        </div>
 
-<footer>
-    &copy; 2026 Fiatal Halogatók Nemzeti Pártja | Minden jog fenntartva.
-</footer>
+        <div class="reform-card">
+          <h3>Digitális Magyarország</h3>
+          <p>Gyorsabb, modernebb, fiatalbarát ország.</p>
+          <div class="reform-details">
+            <ul>
+              <li>Több digitális ügyintézés és egyszerűbb állami rendszerek.</li>
+              <li>Ingyenes digitális készségfejlesztő programok.</li>
+              <li>Innovációs támogatások fiatal fejlesztőknek és startupoknak.</li>
+            </ul>
+          </div>
+        </div>
 
+        <div class="reform-card">
+          <h3>Munka és jövőkép</h3>
+          <p>Ne csak dolgozni lehessen, hanem elindulni is.</p>
+          <div class="reform-details">
+            <ul>
+              <li>Pályakezdő támogatási programok.</li>
+              <li>Több gyakornoki és mentorálási lehetőség.</li>
+              <li>Átláthatóbb, fiatalbarát foglalkoztatási rendszer.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="reform-card">
+          <h3>Közösségi megújulás</h3>
+          <p>Erősebb helyi közösségek, több valódi beleszólás.</p>
+          <div class="reform-details">
+            <ul>
+              <li>Fiatalok számára nyitott közösségi terek.</li>
+              <li>Részvételi fórumok és helyi ötletplatformok.</li>
+              <li>Valódi kapcsolat az állampolgárok és a döntések között.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="reform-card">
+          <h3>Átláthatóság és tisztaság</h3>
+          <p>Kevesebb köd, több őszinteség.</p>
+          <div class="reform-details">
+            <ul>
+              <li>Közérthetőbb állami kommunikáció.</li>
+              <li>Nyilvánosabb döntési folyamatok.</li>
+              <li>Egyszerűbben követhető közpénzfelhasználás.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="discord">
+    <div class="container">
+      <div class="discord-box">
+        <h3>Csatlakozz a Discord közösséghez</h3>
+        <p>Beszélgess, ötletelj és építsd velünk a közösséget.</p>
+        <a class="discord-link" href="[discord.gg](https://discord.gg/hzA6XFYfeT)" target="_blank">
+          Discord meghívó
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Fiatal Halogatók Nemzeti Pártja – Minden jog fenntartva
+  </footer>
+
+  <script>
+    const cards = document.querySelectorAll('.reform-card');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('active');
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
 </body>
 </html>
