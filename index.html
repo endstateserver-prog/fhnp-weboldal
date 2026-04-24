@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FHNP - Hivatalos Oldal</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive; /* Mert miért ne? */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            text-align: center;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero { padding: 50px; background: rgba(0,0,0,0.5); }
+        
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        #halasztas-btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            background: #ff7675;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .discord-btn {
+            background: #7289da;
+            color: white;
+            padding: 20px;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .discord-btn:hover { background: #5b73c7; transform: scale(1.05); }
+
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Fiatal Halogatók Nemzeti Pártja</h1>
+    <p><i>"A holnap a legtermékenyebb napunk."</i></p>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>🔥 Sürgős Pártprogram</h2>
+        <div class="stats-grid">
+            <p>✅ 0% Késztermék</p>
+            <p>✅ 100% Motiváció (majdnem)</p>
+            <p>✅ 420 Elszalasztott lehetőség</p>
+            <p>✅ ∞ Kifogás</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🎮 Csatlakozz a káoszhoz!</h2>
+        <p>Itt tudsz velünk semmittevésről beszélni:</p>
+        <a href="https://discord.gg/yftFB4HrkZ" target="_blank" class="discord-btn">BELÉPÉS A DISCORDRA</a>
+    </div>
+
+    <div class="card">
+        <h2>Dönts most! (Vagy ne)</h2>
+        <p>Akarod, hogy holnap elkezdjük a munkát?</p>
+        <button id="halasztas-btn">IGEN, KEZDJÜK EL!</button>
+    </div>
+</div>
+
+<script>
+    // Ez a gomb elmenekül, ha rá akarsz kattintani (Halogató üzemmód)
+    const btn = document.getElementById('halasztas-btn');
+    btn.addEventListener('mouseover', function() {
+        const x = Math.random() * (window.innerWidth - btn.clientWidth);
+        const y = Math.random() * (window.innerHeight - btn.clientHeight);
+        btn.style.position = 'fixed';
+        btn.style.left = x + 'px';
+        btn.style.top = y + 'px';
+    });
+</script>
+
+</body>
+</html>
